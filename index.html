@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -36,4 +37,33 @@
         }
     </script>
 </body>
+=======
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { background: #000; color: #0f0; font-family: monospace; text-align: center; padding-top: 50px; }
+        #hack-btn { background: #000; border: 2px solid #0f0; color: #0f0; padding: 20px; font-size: 20px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>SYSTEM HACKED</h1>
+    <div id="power">Мощность: 0</div>
+    <br><br>
+    <button id="hack-btn" onclick="hack()">[ВЗЛОМАТЬ]</button>
+
+    <script>
+        let power = 0;
+        async function hack() {
+            const res = await fetch('http://localhost:3000/api/hack', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ userId: 'user1' }) // В будущем будет ID из Telegram
+            });
+            const data = await res.json();
+            document.getElementById('power').innerText = "Мощность: " + data.power;
+        }
+    </script>
+</body>
+>>>>>>> d66fecfc1b5487fea624defbd55507a5373288e9
 </html>
