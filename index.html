@@ -1,9 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
+    <meta charset="UTF-8">
+    <title>SYSTEM HACKED</title>
     <style>
         body { background: #000; color: #0f0; font-family: monospace; text-align: center; padding-top: 50px; }
         #hack-btn { background: #000; border: 2px solid #0f0; color: #0f0; padding: 20px; font-size: 20px; cursor: pointer; }
+        #hack-btn:hover { background: #0f0; color: #000; }
     </style>
 </head>
 <body>
@@ -13,15 +16,23 @@
     <button id="hack-btn" onclick="hack()">[ВЗЛОМАТЬ]</button>
 
     <script>
-        let power = 0;
         async function hack() {
-            const res = await fetch('/api/hack', {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({ userId: 'user1' }) // В будущем будет ID из Telegram
-            });
-            const data = await res.json();
-            document.getElementById('power').innerText = "Мощность: " + data.power;
+            try {
+                // Если сервер и фронтенд на одном домене, этот адрес сработает идеально
+                const res = await fetch('/api/hack', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({ userId: 'user1' })
+                });
+                
+                if (!res.ok) throw new Error('Ошибка сервера');
+                
+                const data = await res.json();
+                document.getElementById('power').innerText = "Мощность: " + data.power;
+            } catch (err) {
+                console.error(err);
+                alert("Ошибка при взломе!");
+            }
         }
     </script>
 </body>
