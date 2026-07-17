@@ -22,4 +22,3 @@ app.listen(port, () => {
 });
 
 app.listen(3000, () => console.log('Сервер запущен'));
->>>>>>> d66fecfc1b5487fea624defbd55507a5373288e9
