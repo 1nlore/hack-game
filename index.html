@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
@@ -18,11 +18,10 @@
     <script>
         async function hack() {
             try {
-                // Если сервер и фронтенд на одном домене, этот адрес сработает идеально
                 const res = await fetch('/api/hack', {
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({ userId: 'user1' })
+                    body: JSON.stringify({ action: 'hack' })
                 });
                 
                 if (!res.ok) throw new Error('Ошибка сервера');
